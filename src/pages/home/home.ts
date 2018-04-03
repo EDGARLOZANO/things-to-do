@@ -44,6 +44,41 @@ export class HomePage {
       });
       prompt.present();
   }
-  
+  editTask(task){
+ 
+    let prompt = this.alertCtrl.create({
+        title: 'Editar tarea',
+        inputs: [{
+            name: 'title'
+        }],
+        buttons: [
+            {
+                text: 'Cancelar'
+            },
+            {
+                text: 'Guardar',
+                handler: data => {
+                    let index = this.bdtask.indexOf(task);
+
+                    if(index > -1){
+                      this.bdtask[index] = data;
+                    }
+                }
+            }
+        ]
+    });
+
+    prompt.present();      
+
+}
+deleteTask(task){
+ 
+  let index = this.bdtask.indexOf(task);
+
+  if(index > -1){
+      this.bdtask.splice(index, 1);
+  }
+}
+
 
 }

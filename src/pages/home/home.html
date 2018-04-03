@@ -14,18 +14,21 @@
     <ion-list-header>
         Tareas
       </ion-list-header>
-      <ion-item-sliding *ngFor="let task of bdtask">
+    <ion-item-sliding *ngFor="let task of bdtask">
  
           <ion-item>
               {{task.title}}
           </ion-item>
 
           <ion-item-options>
-              <button ion-button icon-only (click)="editNote(note)" light>
-                  <ion-icon name="paper"></ion-icon>
+              <button ion-button icon-only (click)="editTask(task)" light>
+                  <ion-icon name="ios-create"></ion-icon>
               </button>
-              <button ion-button icon-only (click)="deleteNote(note)" danger>
+              <button ion-button icon-only (click)="deleteTask(task)" danger>
                   <ion-icon name="trash"></ion-icon>
+              </button>
+              <button ion-button icon-only (click)="finishTask(task)" danger>
+                  <ion-icon name="checkmark-circle"></ion-icon>
               </button>
           </ion-item-options>
 

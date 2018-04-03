@@ -80,7 +80,7 @@ var TabsPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -115,7 +115,7 @@ var AboutPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -150,7 +150,7 @@ var ContactPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -197,14 +197,43 @@ var HomePage = /** @class */ (function () {
         });
         prompt.present();
     };
+    HomePage.prototype.editTask = function (task) {
+        var _this = this;
+        var prompt = this.alertCtrl.create({
+            title: 'Editar tarea',
+            inputs: [{
+                    name: 'title'
+                }],
+            buttons: [
+                {
+                    text: 'Cancelar'
+                },
+                {
+                    text: 'Guardar',
+                    handler: function (data) {
+                        var index = _this.bdtask.indexOf(task);
+                        if (index > -1) {
+                            _this.bdtask[index] = data;
+                        }
+                    }
+                }
+            ]
+        });
+        prompt.present();
+    };
+    HomePage.prototype.deleteTask = function (task) {
+        var index = this.bdtask.indexOf(task);
+        if (index > -1) {
+            this.bdtask.splice(index, 1);
+        }
+    };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/edgar/DAM/things-to-do/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Tareas</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-fab top right >\n    <button ion-fab color="vibrant" mini (click)="addtask()"><ion-icon name="add"></ion-icon></button>\n    \n</ion-fab>\n\n<ion-list>\n    <ion-list-header>\n        Tareas\n      </ion-list-header>\n      <ion-item-sliding *ngFor="let task of bdtask">\n \n          <ion-item>\n              {{task.title}}\n          </ion-item>\n\n          <ion-item-options>\n              <button ion-button icon-only (click)="editNote(note)" light>\n                  <ion-icon name="paper"></ion-icon>\n              </button>\n              <button ion-button icon-only (click)="deleteNote(note)" danger>\n                  <ion-icon name="trash"></ion-icon>\n              </button>\n          </ion-item-options>\n\n      </ion-item-sliding>\n\n  </ion-list>\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/home/edgar/DAM/things-to-do/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/edgar/DAM/things-to-do/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Tareas</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-fab top right >\n    <button ion-fab color="vibrant" mini (click)="addtask()"><ion-icon name="add"></ion-icon></button>\n    \n</ion-fab>\n\n<ion-list>\n    <ion-list-header>\n        Tareas\n      </ion-list-header>\n    <ion-item-sliding *ngFor="let task of bdtask">\n \n          <ion-item>\n              {{task.title}}\n          </ion-item>\n\n          <ion-item-options>\n              <button ion-button icon-only (click)="editTask(task)" light>\n                  <ion-icon name="ios-create"></ion-icon>\n              </button>\n              <button ion-button icon-only (click)="deleteTask(task)" danger>\n                  <ion-icon name="trash"></ion-icon>\n              </button>\n              <button ion-button icon-only (click)="finishTask(task)" danger>\n                  <ion-icon name="checkmark-circle"></ion-icon>\n              </button>\n          </ion-item-options>\n\n      </ion-item-sliding>\n\n  </ion-list>\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/home/edgar/DAM/things-to-do/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], HomePage);
     return HomePage;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -232,7 +261,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_about_about__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(195);
@@ -302,7 +331,7 @@ var AppModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_tabs_tabs__ = __webpack_require__(193);
