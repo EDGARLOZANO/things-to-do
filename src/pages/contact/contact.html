@@ -1,17 +1,16 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+    <ion-list-header>
+        Tareas
+      </ion-list-header>
+    <ion-item-sliding *ngFor="let task of bdtask2">
+ 
+          <ion-item>
+              {{task.title}}
+          </ion-item>
+
+        </ion-item-sliding>
+
   </ion-list>
-</ion-content>

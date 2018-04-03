@@ -11,9 +11,9 @@
 </ion-fab>
 
 <ion-list>
-    <ion-list-header>
-        Tareas
-      </ion-list-header>
+    
+  <ion-item-group>
+        <ion-item-divider color="danger">Pendientes</ion-item-divider>
     <ion-item-sliding *ngFor="let task of bdtask">
  
           <ion-item>
@@ -27,16 +27,35 @@
               <button ion-button icon-only (click)="deleteTask(task)" danger>
                   <ion-icon name="trash"></ion-icon>
               </button>
-              <button ion-button icon-only (click)="finishTask(task)" danger>
+              <button ion-button icon-only (click)="successfulTask(task)" danger>
                   <ion-icon name="checkmark-circle"></ion-icon>
               </button>
           </ion-item-options>
 
       </ion-item-sliding>
+      </ion-item-group>
 
-  </ion-list>
+ 
 
+  <ion-item-group>
+  <ion-item-divider color="secondary">Realizadas</ion-item-divider>
+  <ion-item-sliding *ngFor="let task of bdtask2">
+      <ion-item>
+          {{task.title}}
+      </ion-item>
 
+      <ion-item-options>
+          
+          <button ion-button icon-only (click)="deleteTaskSuccess(task)" danger>
+              <ion-icon name="trash"></ion-icon>
+          </button>
+          
+        </ion-item-options>
+  </ion-item-sliding>
+
+</ion-item-group>
+
+</ion-list>
 
 
 </ion-content>
