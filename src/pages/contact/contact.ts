@@ -6,10 +6,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'contact.html'
 })
 export class ContactPage {
-  bdtask2: any=[];
+  //bdtask2: any=[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.bdtask2.push(navParams.get('data'));
+    //this.bdtask2.push(navParams.get('data'));
   }
 
 }
